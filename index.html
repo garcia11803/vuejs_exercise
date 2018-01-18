@@ -16,7 +16,7 @@
 <body>
 
     <!-- https://vuejs.org/v2/guide/index.html -->
-    <div id="app">
+    <div class="container" id="app">
         <!--
              TODO Show collection data. See js/script.js
              - Show collection Title
@@ -29,17 +29,20 @@
 
         <h1> {{ d.collection.title }}</h1>
 
-        <div id="itemlist">
-            <ol>
-                <li class="card" v-for="item in d.collection.items ">
-                    <div class="card-body">
-                        
-                        <p v-for="data in item.data"> <b>{{ data.prompt }}</b> - <i>{{ data.value }}</i></p>
-                        <a class="card-link" v-bind:href="item.href">Ver en Wikipedia</a>
-                    </div>
-                </li>
+        <div id="itemlist" class="row">
+            <div class="card col-md-4" v-for="item in d.collection.items ">
+                <div class="card-body">
+                    <h5 class="card-title btn-outline-primary" v-for="data in item.data" v-if="data.name == 'name'">{{ data.value }}</h5>
+                    <ul>
+                        <li v-for="data in item.data" v-if="data.name != 'name'">
+                            <b>{{ data.prompt }}</b> -
+                            <i>{{ data.value }}</i>
+                        </li>
+                    </ul>
+                    <a class="card-link btn-primary" v-bind:href="item.href">Ver en Wikipedia</a>
 
-            </ol>
+                </div>
+            </div>
         </div>
 
     </div>
