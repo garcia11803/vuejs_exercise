@@ -35,7 +35,7 @@ var server_data = {
                     { name: "description", value: "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martin's series of fantasy novels, the first of which is A Game of Thrones. It is filmed in Belfast and elsewhere in the United Kingdom, Canada, Croatia, Iceland, Malta, Morocco, Spain, and the United States. The series premiered on HBO in the United States on April 17, 2011, and its seventh season ended on August 27, 2017. The series will conclude with its eighth season premiering in 2019.", prompt: "Description" },
                     { name: "director", value: "Alan Taylor et al", prompt: "Director" },
                     { name: "datePublished", value: "2011-04-17", prompt: "Release Date" },
-                    { name: "image", value: "https://pmcdeadline2.files.wordpress.com/2011/04/gameofthrones_20110412171451.png?w=446&h=299&crop=1", prompt: "Movie Image" }
+                    { name: "image", value: "https://www.ecartelera.com/images/noticias/fotos/42000/42089/1.jpg", prompt: "Movie Image" }
                 ]
             }
         ]
@@ -47,5 +47,33 @@ var app = new Vue({
     el: '#app',
     data: {
         d: server_data
+    },
+    methods: {
+        damepropiedad: function (item,propiedad) {
+            var resultado;
+            for (var i = 0; i < item.data.length; i++) {
+                if (item.data[i].name == propiedad) {
+                    resultado = item.data[i].value;
+                }
+
+            }
+            return resultado;
+        },
+        buttonclick: function (event) {
+            var boton = event.target;
+
+            var lista = boton.nextElementSibling;
+
+
+            if (boton.innerText == "Show") {
+                boton.innerText = "Hide";
+                lista.style.display = "none";
+            }
+            else {
+                boton.innerText = "Show";
+                lista.style.display = "block";
+
+            }
+        }
     }
 });

@@ -31,13 +31,12 @@
 
         <div id="itemlist" class="row">
             <div class="card col-md-4" v-for="item in d.collection.items ">
-                <img  v-for="img in item.data"
-                     v-if="img.name == 'image'"
-                     class="card-img-top"
-                     v-bind:src="img.value"
-                     alt="Card image cap">
+                <img class="card-img-top"
+                     v-bind:src="damepropiedad(item ,'image')"
+                     alt="Card image cap" style="height:60vh">
                 <div class="card-body">
-                    <h5 class="card-title btn-outline-primary" v-for="data in item.data" v-if="data.name == 'name'">{{ data.value }}</h5>
+                    <h5 class="card-title btn-outline-primary">{{ damepropiedad(item ,'name') }}</h5>
+                    <button v-on:click="buttonclick" class="btn btn-primary btn-block">Show</button>
                     <ul>
                         <li v-for="data in item.data" v-if="data.name != 'name' && data.name !='image'">
                             <b>{{ data.prompt }}</b> -
